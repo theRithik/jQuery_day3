@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+<style>
+    .error{
+        color: red;
+    }
+    .hint{
+        
+        padding: 10px;
+        position:relative;
+        left:350px;
+        bottom:30px;
+    }
+    
+</style>
+</head>
+<body>
+<div class="container"><br><br><br>
+    <form id="form">
+    <div class="row mb-4 ">
+        
+        <label class="col-sm-2 col-form-label  ">First Name</label>
+        <div class="col-md-4">
+        <input class=" form-control " id='first' name="first" type="text" required placeholder="First Name" >
+    </div>
+    </div>
+    <div class="row mb-4">
+        <label class="col-sm-2 col-form-label">Last Name</label>
+        <div class="col-md-4">
+            <input class="form-control" id='last' name="last" type="text" value="" placeholder="Last Name" required >
+        </div>
+    </div>
+    <div class="row mb-4">
+        <label class="col-sm-2 col-form-label">Email Id</label>
+        <div class="col-sm-4">
+        <input class="form-control i" id="email" type="email" value="" placeholder="@" required>
+        </div>
+    </div>
+    <div class="row mb-4">
+        <label class="col-sm-2 col-form-label">Address</label>
+        <div class="col-sm-4">
+            <textarea class="form-control" row="2" ></textarea>
+        </div> 
+        </div>
+        <div class="row mb-3">
+            <label class="col-sm-2 col-form-label">country</label>
+            <div class="col-sm-4">
+                <select class="form-select" required>
+                    <option selected>Choose...</option>
+                    <option value="0">India</opton>
+                    <option value="1">America</option>
+                    <option value="2">Australia</opition>
+                    <option value="3">Africa</opition>
+                    <option value="4">Lodon</option> 
+                </select>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label class="col-sm-2 col-form-label">Password</label>
+            <div class="col-sm-4">
+                <input class="form-control password" id="password" type="password" value="" required>
+             <span class="form-text hint">Enter a password longer then 7 characters</span><br>
+                </div>
+                </div>
+
+
+                <div class="row mb-3">
+                    <label class="col-sm-2 col-form-label">Confirm Password</label>
+                    <div class="col-sm-4">
+                        <input class="form-control confirm_password" type="password" value="">
+                        <span class="form-text matching"></span><br>
+                <div class="row mb-4">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" required>
+                        <label class="form-check-label ">Remember me</label><br>
+                        <div class="row mb-4">
+                            <div class="col-sm-6"><br>
+                                <input class="btn btn-primary" id="submit" type="submit" role="button">
+                            </div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+       
+        
+</form>
+<div id="target" style="overflow: scroll; width: 200px; height: 100px;">
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+    sed do eiusmod tempor incididunt ut labore et dolore magna
+    aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+    ullamco laboris nisi ut aliquip ex ea commodo consequat.
+    Duis aute irure dolor in reprehenderit in voluptate velit
+    esse cillum dolore eu fugiat nulla pariatur. Excepteur
+    sint occaecat cupidatat non proident, sunt in culpa qui
+    officia deserunt mollit anim id est laborum.
+  </div>
+  <div id="other">
+    Trigger the handler
+  </div>
+  <div id="log"></div>
+</div>
+
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.1.slim.min.js" integrity="sha256-w8CvhFs7iHNVUtnSP0YKEg00p9Ih13rlL9zGqvLdePA=" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>-->
+    
+    <script>
+        $(window).onLoad('click',function(){
+       $('.password, .confirm_password').on('keyup',function(){
+        if($('.password').val()== $('.confirm_password').val()){
+            $('.matching').text('Matching').css('color', 'green');
+        }
+        else{
+            $('.matching').text('not matching').css('color','red');
+        }
+       })
+
+
+       $('.hint').hide()
+           // $('#submit').on('click',function(){
+            $('#last').on('click',function(){
+                if($('#name').val() ==''){
+                $('#name').css('border-color','red');
+                $('.form-text').show()
+                }
+                else if($('#name').val()!=''){
+                $('#name').css('border-color','green');
+                $('#submit').show()
+                
+                }
+            })
+            $('#submit').click(function(e){
+                if($('#last').val() ==''&& $('#name').val()==''){
+                e.preventDefault();
+
+               }
+               else  if($('#last').val() !=''&& $('#name').val()==''){
+                e.preventDefault();
+                
+               }
+               else  if($('#last').val() ==''&& $('#name').val()!=''){
+                e.preventDefault();
+               }
+
+               else{
+                alert('form subbmitted')
+               }
+                })
+                $('#password').keypress(function(){
+                    $('.hint').show()
+                })
+              
+
+
+
+
+    /* $('.hint').hide()
+     $('#password').on('keypress',function(){
+       
+            $('.hint').show()
+        */
+  $('#form').validate();
+    
+    $( "#target" ).scroll(function() {
+  $( "#log" ).append( "<div>Handler for .scroll() called.</div>" );
+});
+})
+    </script>
+</body>
+</html>
